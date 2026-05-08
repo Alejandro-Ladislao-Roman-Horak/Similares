@@ -1,0 +1,20 @@
+form {
+  background: pink;
+  padding: 20px;
+  border-radius: 12px;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+form input, form select, form button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+form button {
+  background: black;
+  color: white;
+  cursor: pointer;
+}

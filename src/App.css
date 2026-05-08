@@ -1,0 +1,16 @@
+body {
+  background: #111;
+  color: white;
+  font-family: Arial;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  padding: 30px;
+}
+
+h1 {
+  color: pink;
+  margin-bottom: 20px;
+}

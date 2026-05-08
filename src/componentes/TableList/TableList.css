@@ -1,0 +1,51 @@
+.table-list {
+  display: grid;
+  grid-template-columns:
+    60px
+    180px
+    1fr
+    100px
+    80px
+    150px
+    250px;
+
+  align-items: center;
+  gap: 20px;
+
+  background: #1e1e1e;
+  color: white;
+
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+}
+
+.descripcion {
+  line-height: 1.5;
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.acciones button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.alerta {
+  background: orange;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.stock-bajo {
+  border-left: 6px solid orange;
+}
