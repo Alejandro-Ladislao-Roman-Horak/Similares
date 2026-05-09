@@ -3,12 +3,26 @@ import useDatos from "./hooks/useDatos";
 import { useState } from "react";
 import "./App.css";
 
+interface Dato {
+  id: number;
+  nombre: string;
+  descripcion: string;
+  precio: number;
+  stock: number;
+  tipo: string;
+}
+
 function App() {
   const { datos, insertar, actualizar, eliminar } = useDatos();
 
-  const [datoEditar, setDatoEditar] = useState(null);
-  const [filtro, setFiltro] = useState("Todos");
-  const [orden, setOrden] = useState("nombre");
+  const [datoEditar, setDatoEditar] =
+    useState<Dato | null>(null);
+
+  const [filtro, setFiltro] =
+    useState<string>("Todos");
+
+  const [orden, setOrden] =
+    useState<string>("nombre");
 
   const filtrados = datos
     .filter((item) =>
