@@ -1,7 +1,41 @@
 import { useState, useEffect } from "react";
 import "./Formulario.css";
 
-function Formulario({insertar, actualizar, datoEditar}) {
+interface Dato {
+  id: number;
+  nombre: string;
+  descripcion: string;
+  precio: number;
+  stock: number;
+  tipo: string;
+}
+
+interface Props {
+  insertar: (
+    nombre: string,
+    descripcion: string,
+    precio: number,
+    stock: number,
+    tipo: string
+  ) => void;
+
+  actualizar: (
+    id: number,
+    nombre: string,
+    descripcion: string,
+    precio: number,
+    stock: number,
+    tipo: string
+  ) => void;
+
+  datoEditar: Dato | null;
+}
+
+function Formulario({
+  insertar,
+  actualizar,
+  datoEditar,
+}: Props) {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState(0);
@@ -18,13 +52,22 @@ function Formulario({insertar, actualizar, datoEditar}) {
     }
   }, [datoEditar]);
 
-  const manejarSubmit = (e) => {
+  const manejarSubmit = (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
-    // VALIDACIONES
-    if (!nombre.trim()) return alert("Nombre requerido");
-    if (precio <= 0) return alert("Precio mayor a 0");
-    if (stock < 0) return alert("Stock no puede ser negativo");
+    if (!nombre.trim()) {
+      return alert("Nombre requerido");
+    }
+
+    if (precio <= 0) {
+      return alert("Precio mayor a 0");
+    }
+
+    if (stock < 0) {
+      return alert("Stock no puede ser negativo");
+    }
 
     if (datoEditar) {
       actualizar(
@@ -36,7 +79,13 @@ function Formulario({insertar, actualizar, datoEditar}) {
         tipo
       );
     } else {
-      insertar(nombre, descripcion, precio, stock, categoria, tipo);
+      insertar(
+        nombre,
+        descripcion,
+        precio,
+        stock,
+        tipo
+      );
     }
 
     setNombre("");
@@ -66,18 +115,22 @@ function Formulario({insertar, actualizar, datoEditar}) {
         type="number"
         placeholder="Precio"
         value={precio}
-        onChange={(e) => setPrecio(Number(e.target.value))}
+        onChange={(e) =>
+          setPrecio(Number(e.target.value))
+        }
       />
 
       <input
         type="number"
         placeholder="Stock"
         value={stock}
-        onChange={(e) => setStock(Number(e.target.value))}
+        onChange={(e) =>
+          setStock(Number(e.target.value))
+        }
       />
 
       <input
-        type="string"
+        type="text"
         placeholder="Tipo"
         value={tipo}
         onChange={(e) => setTipo(e.target.value)}
